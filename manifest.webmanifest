@@ -1,0 +1,15 @@
+{
+  "name": "Umbria On the Road",
+  "short_name": "Umbria",
+  "description": "Dashboard di viaggio Umbria 19–23 settembre 2026: POI, mappa, meteo, itinerario, ristoranti ed eventi.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#EFE4C7",
+  "theme_color": "#2A2013",
+  "lang": "it",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
