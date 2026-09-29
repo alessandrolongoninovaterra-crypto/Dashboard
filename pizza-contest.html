@@ -98,27 +98,8 @@
   }
   .pc-turno-badge.active{background:var(--yellow); color:var(--purple); border-color:var(--yellow-dark);}
 
-  .pc-pizza{
-    width:min(190px, 80%); aspect-ratio:1/1; border-radius:50%; position:relative; margin:8px auto 4px;
-    background:
-      conic-gradient(var(--bg-2) calc(var(--pct,100) * 1%), transparent 0),
-      repeating-conic-gradient(var(--yellow) 0deg 4deg, var(--yellow-dark) 4deg 8deg);
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 0 0 6px var(--purple), 0 0 0 8px var(--line), 0 10px 26px rgba(29,5,61,0.15);
-    flex-shrink:0;
-  }
-  .pc-pizza.alarm{animation:ring .5s infinite;}
   @keyframes ring{0%,100%{transform:rotate(0deg);}25%{transform:rotate(-3deg);}75%{transform:rotate(3deg);}}
-  .pc-pizza::before{content:""; position:absolute; inset:13px; border-radius:50%; background:var(--bg);}
-  .pc-pizza .pep{position:absolute; width:9px; height:9px; border-radius:50%; background:var(--purple); opacity:.85;}
-  .pc-time-text{position:relative; z-index:2; font-family:var(--display); font-size:clamp(28px,4.5vw,40px); font-weight:800; color:var(--purple); font-variant-numeric:tabular-nums;}
-  .pc-time-label{position:relative; z-index:2; font-size:10.5px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.08em; margin-top:-2px; text-align:center; max-width:160px; font-weight:600;}
 
-  .pc-phase-ring{
-    width:min(260px, 85%); aspect-ratio:1/1; border-radius:50%; margin:8px auto 4px;
-    padding:7px; box-sizing:border-box; flex-shrink:1; min-height:0; transition:background .4s ease;
-  }
-  .pc-phase-ring .pc-pizza{width:100%; height:100%; margin:0;}
   .pc-phase-pills{display:flex; gap:4px; width:100%; margin-top:8px;}
   .pc-phase-pill{
     flex:1; font-size:9.5px; font-weight:700; text-align:center; padding:5px 2px; border-radius:6px;
@@ -144,7 +125,6 @@
   .pc-btn.dark{background:var(--purple); color:#fff;}
   .pc-btn.gold{background:var(--yellow); color:var(--purple);}
   .pc-btn.armed{background:var(--red); border-color:var(--red); color:#fff;}
-  .pc-btn.full{width:100%;}
   .pc-btn.small{padding:8px 12px; font-size:12.5px; border-radius:8px;}
 
   /* ---- team grid ---- */
@@ -230,13 +210,11 @@
   .pc-name-input:focus{outline:none; border-color:var(--purple);}
   .pc-name-input:disabled{background:var(--bg-2); color:var(--ink-dim);}
   .pc-team-top-row{display:flex; flex-wrap:wrap; gap:12px; flex-shrink:0; margin-bottom:10px; align-items:stretch; min-height:140px;}
-  .pc-team-fields-card{flex:0 0 280px; margin-bottom:0; display:flex; flex-direction:column; justify-content:center;}
 
   .pc-recipe-footer{
     flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:10px 14px; flex-wrap:wrap;
     background:var(--bg); border:1.5px solid var(--line); border-radius:14px; padding:9px 16px; margin-top:10px;
   }
-  .pc-recipe-footer.over{background:var(--yellow-soft); border-color:var(--yellow-dark);}
   .pc-recipe-footer .pc-btn{flex-shrink:0;}
   .pc-footer-stats{display:flex; gap:18px; align-items:center; flex-wrap:wrap;}
   .pc-footer-count{font-family:var(--display); font-weight:800; font-size:17px; color:var(--purple); font-variant-numeric:tabular-nums;}
@@ -280,13 +258,10 @@
   .pc-rules-empty{color:var(--ink-dim); font-style:italic; font-weight:500; font-size:18px;}
 
   /* ---- settings ---- */
-  .pc-settings-row{display:flex; align-items:center; gap:12px;}
   .pc-names-card{margin-bottom:0; flex:0 1 300px; min-width:220px; display:flex; flex-direction:column; max-height:260px;}
   .pc-names-list{flex:1; min-height:0; overflow-y:auto; display:grid; gap:6px; align-content:start; padding-right:4px;}
   .pc-name-round{font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-dim); margin-top:4px;}
   .pc-name-round:first-child{margin-top:0;}
-  .pc-name-row b{font-family:var(--display); font-weight:900; color:var(--purple); width:2.2em; flex:none;}
-  .pc-name-row .pc-name-input{padding:6px 9px; font-size:13px;}
   .pc-setup-card{margin-bottom:0; flex:0 1 560px; min-width:0; display:flex; flex-direction:column;}
   .pc-setup-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px 12px;}
   .pc-setup-field{display:grid; gap:3px; min-width:0;}
@@ -395,7 +370,6 @@
   .dz-empty{grid-column:1/-1; color:var(--ink-dim); padding:.6em 0; font-weight:600; font-size:.95em;}
 
   .dz-confirmed{flex:1 1 0; justify-content:center; text-align:center; gap:.5em; padding:1.2em;}
-  .dz-confirmed .ic{font-size:2em;}
   .dz-confirmed h4{font-family:var(--display); font-size:1.4em; font-weight:800; color:var(--purple);}
   .dz-confirmed p{font-size:.95em; color:var(--ink-dim); font-weight:500;}
   .dz-confirmed .pizza-name{font-family:var(--display); font-size:1.2em; font-weight:800; color:var(--purple); background:var(--yellow); display:inline-block; padding:.2em .7em; border-radius:6px; align-self:center;}
@@ -427,7 +401,7 @@
     .pc-cat-columns{grid-template-columns:1fr 1fr;}
   }
   @media (prefers-reduced-motion:reduce){
-    .pc-pizza.alarm,.pc-pill.live .dot,.pc-bake-box,.pc-bake-overlay{animation:none;}
+    .pc-pill.live .dot,.pc-bake-box,.pc-bake-overlay{animation:none;}
   }
 
   /* ===================== iOS-STYLE LAYER: large rounded controls, gloss, soft depth ===================== */
@@ -538,13 +512,12 @@
     --aub-900:#12021F; --aub-800:#1D053D; --aub-700:#2E0B57; --aub-600:#44167E; --aub-500:#6A2FB0; --aub-300:#B597E0;
     --sun-300:#FFF3A0; --sun-400:#FFE45C; --sun-500:#FFD60A; --sun-600:#F5B82E;
     --spring: cubic-bezier(.32,1.28,.54,1);
-    --ease-out: cubic-bezier(.2,.8,.2,1);
   }
 
   /* ambient aurora behind everything */
   .pc-root{background:#EEEAF5; isolation:isolate; overflow:clip;}
   #pc-app,.pc-team-bg,.pc-dash-grid{overflow-x:clip;}
-  .pc-root::before,.pc-root::after{content:""; position:fixed; z-index:-1; pointer-events:none; border-radius:50%; filter:blur(70px); opacity:.55;}
+  .pc-root::before,.pc-root::after{content:""; position:fixed; z-index:-1; pointer-events:none; border-radius:50%; filter:blur(70px); opacity:.55; will-change:transform;}
   .pc-root::before{width:60vmax; height:60vmax; left:-18vmax; top:-22vmax; background:radial-gradient(circle, rgba(255,214,10,.55), rgba(255,214,10,0) 65%); animation:auroraA 26s ease-in-out infinite alternate;}
   .pc-root::after{width:70vmax; height:70vmax; right:-25vmax; bottom:-30vmax; background:radial-gradient(circle, rgba(106,47,176,.45), rgba(106,47,176,0) 65%); animation:auroraB 32s ease-in-out infinite alternate;}
   @keyframes auroraA{to{transform:translate(18vmax,14vmax) scale(1.15);}}
@@ -712,7 +685,8 @@
   const turnoSeconds = () => TURNO_MINUTES*60;
 
   const $ = s => document.querySelector(s);
-  const escapeHtml = s => String(s==null?"":s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const HTML_ESC = {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"};
+  const escapeHtml = s => String(s==null?"":s).replace(/[&<>"']/g, c => HTML_ESC[c]);
   const fmtNum = (n,d=1) => Number(n).toLocaleString("en-GB",{maximumFractionDigits:d});
   const uid = () => Math.random().toString(36).slice(2,9);
   const newSeed = () => Math.floor(Math.random()*1e9);
@@ -764,7 +738,9 @@
   Object.entries(META_DEF).forEach(([id,[art,size,weight,n]]) => META[id] = {art,size,weight,n});
 
   const ITEM = {}; // id -> {id, n, cat}
+  let itemsVersion = 0; // bumped whenever the ingredient list changes (invalidates pizza thumbnails)
   function indexItems(){
+    itemsVersion++;
     Object.keys(ITEM).forEach(k => delete ITEM[k]);
     Object.entries(INGREDIENTS).forEach(([cat,c]) => c.items.forEach(it => ITEM[it.id] = {id:it.id, n:it.n, cat}));
   }
@@ -860,10 +836,21 @@ const ART={
     ctx.closePath();
   }
   const BASE_SEED = 11;
-  function drawPizza(ctx,S,recipe,opts={}){
+  // crust + sauce never change for a given size/sauce, so they are rendered once and reused
+  const baseCache = new Map();
+  function pizzaBase(S,col){
+    const key=S+"|"+col[0]+"|"+col[1];
+    let c=baseCache.get(key);
+    if(c) return c;
+    c=document.createElement("canvas"); c.width=c.height=S;
+    drawBase(c.getContext("2d"),S,col,1,null);
+    if(baseCache.size>=6) baseCache.delete(baseCache.keys().next().value);
+    baseCache.set(key,c); return c;
+  }
+  function drawBase(ctx,S,col,sauceK,bg){
     const cx=S/2,cy=S/2,R=S*.47,rs=R*.86,rnd=rng(BASE_SEED);
     ctx.clearRect(0,0,S,S);
-    if(opts.bg){ctx.fillStyle=opts.bg;ctx.fillRect(0,0,S,S)}
+    if(bg){ctx.fillStyle=bg;ctx.fillRect(0,0,S,S)}
     // crust
     ctx.save();ctx.shadowColor='rgba(29,5,61,.28)';ctx.shadowBlur=S*.035;ctx.shadowOffsetY=S*.012;
     blob(ctx,cx,cy,R,rnd,.012,64);
@@ -877,16 +864,21 @@ const ART={
     ctx.restore();
     ctx.lineWidth=S*.004;ctx.strokeStyle='rgba(110,58,20,.55)';blob(ctx,cx,cy,R,rng(BASE_SEED),.012,64);ctx.stroke();
     // sauce (or bare dough)
-    const an=opts.anim||null;
-    const sauceK=an&&an.sauce!=null?an.sauce:1;
     ctx.save();blob(ctx,cx,cy,rs*(sauceK<1?Math.max(.02,sauceK):1),rnd,.028,56);
-    const col=recipe.sauce?sauceColors(recipe.sauce):['#F3DDAE','#E9CB90'];
     const sg=ctx.createRadialGradient(cx,cy,rs*.1,cx,cy,rs);sg.addColorStop(0,col[0]);sg.addColorStop(1,col[1]);
     ctx.fillStyle=sg;ctx.fill();ctx.clip();
     for(let i=0;i<46;i++){const a=rnd()*6.28,d=Math.sqrt(rnd())*rs,r=S*(.02+rnd()*.05);
       ctx.fillStyle=rnd()<.5?'rgba(70,20,8,.12)':'rgba(255,240,210,.14)';
       ctx.beginPath();ctx.arc(cx+Math.cos(a)*d,cy+Math.sin(a)*d,r,0,7);ctx.fill()}
     ctx.restore();
+  }
+  function drawPizza(ctx,S,recipe,opts={}){
+    const cx=S/2,cy=S/2,R=S*.47,rs=R*.86;
+    const an=opts.anim||null;
+    const sauceK=an&&an.sauce!=null?an.sauce:1;
+    const col=recipe.sauce?sauceColors(recipe.sauce):['#F3DDAE','#E9CB90'];
+    if(sauceK<1||opts.bg) drawBase(ctx,S,col,sauceK,opts.bg); // sauce animation or one-off PDF render: draw directly
+    else { ctx.clearRect(0,0,S,S); ctx.drawImage(pizzaBase(S,col),0,0); }
     // toppings, scattered with a per-layer seed (same seed = same layout)
     const placeR=rs*.95;
     recipe.layers.forEach(L=>{
@@ -919,7 +911,7 @@ const ART={
   }
   const pizzaThumbCache = new Map();
   function pizzaThumb(teamId){
-    const r=teams[teamId].recipe, key=JSON.stringify(r)+"|"+Object.keys(ITEM).length;
+    const r=teams[teamId].recipe, key=JSON.stringify(r)+"|"+itemsVersion;
     const hit=pizzaThumbCache.get(teamId);
     if(hit&&hit.key===key) return hit.url;
     const c=document.createElement("canvas");c.width=c.height=240;drawPizza(c.getContext("2d"),240,r);
@@ -956,8 +948,6 @@ const ART={
 
   // ===================== TIMER + PHASES =====================
   const PHASES = ["Pizza design", "Ingredient prep", "Dough & toppings", "Bake & photo"];
-  const PHASE_COLORS = ["var(--purple)", "var(--yellow-dark)", "var(--orange)", "var(--red)"];
-  const PHASE_COLORS_PALE = ["var(--purple-soft)", "var(--yellow-soft)", "var(--orange-soft)", "var(--red-soft)"];
   function fmtTime(sec){
     sec = Math.max(0, Math.round(sec));
     return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0");
@@ -970,17 +960,6 @@ const ART={
     if(!timer.currentTurno || timer.total <= 0) return -1;
     const elapsed = Math.max(0, timer.total - remainingSeconds());
     return Math.max(0, Math.min(3, Math.floor(elapsed / (timer.total/4))));
-  }
-  function phaseRingBackground(p){
-    const c=[0,1,2,3].map(i => p>=0 && i<=p ? PHASE_COLORS[i] : PHASE_COLORS_PALE[i]);
-    return `conic-gradient(${c[0]} 0deg 90deg, ${c[1]} 90deg 180deg, ${c[2]} 180deg 270deg, ${c[3]} 270deg 360deg)`;
-  }
-  function phasePillsHtml(p){
-    return `<div class="pc-phase-pills">${PHASES.map((ph,i)=>{
-      const reached = p>=0 && i<=p, active = p>=0 && i===p;
-      const glow = active ? `box-shadow:0 0 0 2px var(--bg), 0 0 0 4px ${PHASE_COLORS[i]};` : "";
-      return `<div class="pc-phase-pill" style="background:${reached?PHASE_COLORS[i]:PHASE_COLORS_PALE[i]}; color:${reached?"#fff":"var(--ink-dim)"}; ${glow}">${ph}</div>`;
-    }).join("")}</div>`;
   }
   function timeUp(){ return timer.currentTurno > 0 && remainingSeconds() <= 0; }
   function statusFor(teamId){
@@ -1048,14 +1027,14 @@ const ART={
     document.body.appendChild(overlay);
     setTimeout(() => overlay.remove(), 6000);
   }
-  function showBakeItPopup(){ playBakeBeep(); showOverlay("🍕🔥","BAKE IT!",`${Math.round((GAME.bakeItMinutes*60)/60)} minutes left — time to put it in the oven!`); }
+  function showBakeItPopup(){ playBakeBeep(); showOverlay("🍕🔥","BAKE IT!",`${GAME.bakeItMinutes} minutes left — time to put it in the oven!`); }
   function showFinishPopup(){ playAlarm(); showOverlay("⏰🏁","FINISH!","Time's up — put everything down and bring your pizza!","var(--red)"); }
 
   let toastT = 0;
   function toast(msg){ const t=$("#dz-toast"); t.textContent=msg; t.hidden=false; clearTimeout(toastT); toastT=setTimeout(()=>t.hidden=true,3200); }
 
   // ===================== RENDER DISPATCH =====================
-  let lastView = "organizer", navDir = "vin-fwd";
+  let lastView = "organizer";
   function render(){
     closeSheet(true);
     if(view !== lastView){
@@ -1117,8 +1096,8 @@ const ART={
   }
   function updateDial(){
     const dial=$("#pc-dial"); if(!dial) return;
-    const rem=remainingSeconds(), p=currentPhaseIndex(), frac=timer.total?Math.max(0,Math.min(1,rem/timer.total)):1;
-    const label = timer.currentTurno===0 ? "Ready to start" : timeUp() ? "Time's up" : (timer.running ? PHASES[p] : "Paused");
+    const rem=remainingSeconds(), up=timer.currentTurno>0 && rem<=0, p=currentPhaseIndex(), frac=timer.total?Math.max(0,Math.min(1,rem/timer.total)):1;
+    const label = timer.currentTurno===0 ? "Ready to start" : up ? "Time's up" : (timer.running ? PHASES[p] : "Paused");
     const t=fmtTime(rem);
     $("#dial-time").innerHTML = t.replace(":", '<span class="dial-colon">:</span>');
     $("#dial-label").textContent = label;
@@ -1127,20 +1106,20 @@ const ART={
     $("#dial-knob").style.transform = `rotate(${(360*frac).toFixed(2)}deg)`;
     dial.classList.toggle("running", timer.running);
     dial.classList.toggle("hurry", timer.running && rem <= 60 && rem > 0);
-    dial.classList.toggle("done", timeUp());
-    document.querySelectorAll(".dial-phase").forEach(el=>{ const i=+el.dataset.ph; el.classList.toggle("reached", p>=0 && i<p); el.classList.toggle("active", p>=0 && i===p && !timeUp()); });
-    document.querySelectorAll(".pc-phase-pill[data-ph]").forEach(el=>{ const i=+el.dataset.ph; el.classList.toggle("reached", p>=0 && i<p); el.classList.toggle("active", p>=0 && i===p && !timeUp()); });
-    document.querySelectorAll("#dial-rounds [data-round]").forEach(el=>el.classList.toggle("active", +el.dataset.round===timer.currentTurno));
-    document.querySelectorAll('[data-act="start-t"]').forEach(el=>el.classList.toggle("current", +el.dataset.n===timer.currentTurno));
-    const pb=$("#pause-btn"); if(pb){ pb.textContent = timer.running ? "Pause" : "Resume"; pb.disabled = !timer.currentTurno || timeUp(); }
+    dial.classList.toggle("done", up);
+    const panel=$("#pc-timer-panel");
+    panel.querySelectorAll(".dial-phase,.pc-phase-pill[data-ph]").forEach(el=>{ const i=+el.dataset.ph; el.classList.toggle("reached", p>=0 && i<p); el.classList.toggle("active", p>=0 && i===p && !up); });
+    panel.querySelectorAll("#dial-rounds [data-round]").forEach(el=>el.classList.toggle("active", +el.dataset.round===timer.currentTurno));
+    panel.querySelectorAll('[data-act="start-t"]').forEach(el=>el.classList.toggle("current", +el.dataset.n===timer.currentTurno));
+    const pb=$("#pause-btn"); if(pb){ pb.textContent = timer.running ? "Pause" : "Resume"; pb.disabled = !timer.currentTurno || up; }
   }
   function teamTilesHtml(){
-    return TEAM_IDS.map(id=>{
+    return TEAM_IDS.map((id,idx)=>{
       const t = teams[id], status = statusFor(id), st = recipeStats(t.recipe);
       const cls = status==="in_corso"?"t-live":status==="completata"?"t-done":status==="terminato"?"t-over":"";
       const sub = t.pizzaName ? "🍕 "+escapeHtml(t.pizzaName) : (st.hasSalsa||st.distinct ? `${st.distinct} topping${st.distinct===1?"":"s"}${st.hasSalsa?" + sauce":""}` : "no recipe yet");
       const drawn = st.hasSalsa || st.distinct;
-      return `<button class="pc-tile ${cls}" data-act="open-team" data-id="${id}" style="--i:${TEAM_IDS.indexOf(id)}">
+      return `<button class="pc-tile ${cls}" data-act="open-team" data-id="${id}" style="--i:${idx}">
           <div class="pc-tile-body">
             <div class="pc-tile-top"><span class="pc-tile-round">Round ${teamTurno(id)}</span>${statusPill(status)}</div>
             <div class="pc-tile-name">${escapeHtml(teamName(id))}</div>
@@ -1368,11 +1347,11 @@ const ART={
   }
   function tilesHtml(){
     const r = curTeam().recipe, locked = isLocked(), st = recipeStats(r);
-    return INGREDIENTS[activeCat].items.map(it=>{
+    return INGREDIENTS[activeCat].items.map((it,idx)=>{
       const sauce = activeCat==="salse", sel = sauce && r.sauce===it.id;
       const L = r.layers.find(l=>l.ingId===it.id), n = L ? L.count : 0;
       const full = !sauce && !L && st.distinct >= GAME.maxToppings;
-      return `<div class="dz-tile ${sel?"sel":""} ${n?"on":""} ${lastPicked===it.id?"pop":""}" style="--i:${INGREDIENTS[activeCat].items.indexOf(it)}">
+      return `<div class="dz-tile ${sel?"sel":""} ${n?"on":""} ${lastPicked===it.id?"pop":""}" style="--i:${idx}">
           <button class="dz-tbtn" data-act="dz-pick" data-id="${it.id}" ${locked?"disabled":""} aria-label="${sauce?(sel?"Remove":"Choose"):"Add"} ${escapeHtml(it.n)}" ${full?'aria-disabled="true"':""}><span class="dz-thumb">${thumbImg(it.id)}</span><span class="dz-tn">${escapeHtml(it.n)}</span></button>
           ${n?`<span class="dz-badge">${n}</span>`:""}
           <button class="dz-tedit" data-act="dz-adjust" data-id="${it.id}" aria-label="Size and weight of ${escapeHtml(it.n)}">${ICON_ADJUST}</button>
@@ -1582,8 +1561,15 @@ const ART={
 
   // ---- fit tiles and recipe list inside their boxes (no scrolling) ----
   function fitVar(el,name,max,min){
-    let v=max; el.style.setProperty(name,v);
-    while(el.scrollHeight>el.clientHeight+1 && v>min){ v=Math.round((v-.04)*100)/100; el.style.setProperty(name,v); }
+    const fits=v=>{ el.style.setProperty(name,v); return el.scrollHeight<=el.clientHeight+1; };
+    if(fits(max)) return;
+    // same candidate values as stepping down by .04 from max; the last one (<= min) is used if nothing fits
+    const steps=[max]; let v=max;
+    while(v>min){ v=Math.round((v-.04)*100)/100; steps.push(v); }
+    if(steps.length===1) return;
+    let lo=1, hi=steps.length-1;
+    while(lo<hi){ const mid=(lo+hi)>>1; if(fits(steps[mid])) hi=mid; else lo=mid+1; }
+    el.style.setProperty(name,steps[lo]);
   }
   function fitAll(){
     if(view!=="team") return;
