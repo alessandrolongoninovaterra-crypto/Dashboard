@@ -250,12 +250,6 @@
     font-family:var(--body); font-weight:500; line-height:1.5;
   }
   .pc-rules-textarea:focus{outline:none; border-color:var(--purple);}
-  .pc-rules-display{
-    flex:1; min-height:0; overflow-y:auto; white-space:pre-wrap;
-    font-size:clamp(18px, 2.3vw, 27px); line-height:1.65; color:var(--ink); font-weight:600;
-    padding:4px 6px 4px 0;
-  }
-  .pc-rules-empty{color:var(--ink-dim); font-style:italic; font-weight:500; font-size:18px;}
 
   /* ---- settings ---- */
   .pc-names-card{margin-bottom:0; flex:0 1 300px; min-width:220px; display:flex; flex-direction:column; max-height:260px;}
@@ -637,6 +631,41 @@
   @keyframes sheetUp{from{transform:translateY(40px) scale(.96); opacity:0;}to{transform:none; opacity:1;}}
   .dz-toast:not([hidden]){animation:toastIn .45s var(--spring) both;}
   @keyframes toastIn{from{transform:translate(-50%,24px) scale(.9); opacity:0;}to{transform:translate(-50%,0); opacity:1;}}
+
+  /* ===================== RULES PAGE: step cards ===================== */
+  .rl-wrap{flex:1; min-height:0; display:flex; flex-direction:column; gap:14px;}
+  .rl-phases{flex:none; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; padding:12px 14px; border-radius:22px; color:#fff;
+    background:radial-gradient(120% 140% at 20% 0%, var(--aub-600) 0%, var(--aub-800) 60%, var(--aub-900) 100%); box-shadow:0 14px 34px rgba(29,5,61,.28), inset 0 1px 0 rgba(255,255,255,.12);}
+  .rl-phase{position:relative; padding:8px 12px 8px 14px; border-radius:14px; background:rgba(255,255,255,.07); box-shadow:inset 0 0 0 1px rgba(255,255,255,.1); min-width:0;}
+  .rl-phase::before{content:""; position:absolute; left:0; top:10px; bottom:10px; width:4px; border-radius:4px; background:var(--sun-500);}
+  .rl-phase b{display:block; font-family:var(--display); font-weight:900; font-size:clamp(14px,1.6vw,19px); line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .rl-phase span{display:block; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--sun-400); margin-top:3px; font-variant-numeric:tabular-nums;}
+  .rl-phase-label{grid-column:1/-1; font-size:10.5px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--aub-300); margin-bottom:2px;}
+  .rl-grid{flex:1; min-height:0; display:grid; gap:14px; grid-template-columns:repeat(var(--c),minmax(0,1fr)); grid-template-rows:repeat(var(--r),minmax(0,1fr));}
+  .rl-card{position:relative; min-height:0; overflow:hidden; border-radius:24px; padding:clamp(14px,1.8vw,22px); display:flex; flex-direction:column; gap:8px;
+    background-color:#fff; background-image:var(--gloss-soft); box-shadow:var(--lift-soft), 0 10px 26px rgba(29,5,61,.08); animation:tileIn .6s var(--spring) both; animation-delay:calc(var(--i,0) * 60ms + 60ms);}
+  .rl-card::after{content:""; position:absolute; right:-30px; bottom:-30px; width:120px; height:120px; border-radius:50%; background:radial-gradient(circle, rgba(255,214,10,.22), rgba(255,214,10,0) 70%); pointer-events:none;}
+  .rl-top{display:flex; align-items:center; justify-content:space-between; gap:10px; flex:none;}
+  .rl-num{width:clamp(40px,4.2vw,56px); aspect-ratio:1; border-radius:50%; display:grid; place-items:center; font-family:var(--display); font-weight:900; font-size:clamp(20px,2.3vw,30px); color:var(--aub-800);
+    background-color:var(--sun-500); background-image:var(--gloss),linear-gradient(180deg,var(--sun-400),var(--sun-600)); box-shadow:0 6px 16px rgba(255,214,10,.35), inset 0 1px 0 rgba(255,255,255,.6);}
+  .rl-icon{font-size:clamp(30px,3.6vw,50px); line-height:1; filter:drop-shadow(0 3px 4px rgba(29,5,61,.18));}
+  .rl-text{font-family:var(--display); font-weight:800; font-size:clamp(15px,1.2vw + 1.1vmin,26px); line-height:1.2; color:var(--purple); letter-spacing:-.01em; overflow-wrap:break-word; hyphens:auto; margin-top:auto;}
+  .rl-card:nth-child(odd) .rl-num{background-image:var(--gloss),linear-gradient(180deg,#4A1C8C,#1D053D); color:var(--sun-400); box-shadow:0 6px 16px rgba(29,5,61,.3), inset 0 1px 0 rgba(255,255,255,.25);}
+  .rl-empty{flex:1; display:grid; place-items:center; text-align:center; color:var(--ink-dim); font-weight:600; font-size:18px; line-height:1.6;}
+  .rl-empty > div > div{font-size:56px; margin-bottom:8px;}
+  @media (orientation:portrait){
+    .rl-grid{grid-template-columns:repeat(var(--pc),minmax(0,1fr)); grid-template-rows:repeat(var(--pr),minmax(0,1fr));}
+    .rl-card{flex-direction:row; align-items:center; gap:clamp(12px,2vw,20px);}
+    .rl-top{flex-direction:column; gap:8px;}
+    .rl-text{margin-top:0; flex:1; min-width:0;}
+  }
+  @media (max-width:640px){
+    .rl-scroll{overflow:visible; flex:none;}
+    .rl-wrap,.rl-grid{flex:none;}
+    .rl-phases{grid-template-columns:1fr 1fr;}
+    .rl-grid{grid-template-columns:1fr; grid-template-rows:none;}
+    .rl-card{min-height:0;}
+  }
 
   .dz-lname{min-width:6.5em;}
   @media (prefers-reduced-motion:reduce){
@@ -1304,8 +1333,38 @@ const ART={
   }
 
   // ===================== RULES =====================
+  // one rule per line in Settings; a leading "1." / "1)" / "-" is stripped and steps are renumbered
+  const RULE_ICONS = [
+    [/bake|oven|cook|forno|cuoc|inforn/i, "🔥"],
+    [/present|judge|photo|giuria|giudic|foto/i, "📸"],
+    [/stretch|dough|stend|impast/i, "🫓"],
+    [/\btop|topping|farc|condi/i, "🍅"],
+    [/prepar|organi|workstation|postazion/i, "🔪"],
+    [/draw|concept|sketch|disegn/i, "✏️"],
+    [/\bname|nome/i, "🏷️"],
+    [/select|choose|ingredient|scegli|ingredien/i, "🧺"],
+    [/clean|pulis|tidy/i, "🧽"],
+    [/time|tempo|minut/i, "⏱️"],
+  ];
+  const ruleIcon = t => (RULE_ICONS.find(([re]) => re.test(t)) || [0,"🍕"])[1];
+  function rulesGridStyle(n){
+    const cols = n<=3 ? n : n===4 ? 2 : n<=6 ? 3 : n<=12 ? 4 : 5, pcols = n<=3 ? 1 : n<=12 ? 2 : 3; // pcols: portrait
+    return `--c:${cols}; --r:${Math.ceil(n/cols)}; --pc:${pcols}; --pr:${Math.ceil(n/pcols)};`;
+  }
   function renderRules(){
-    const has = RULES_TEXT && RULES_TEXT.trim().length > 0;
+    const steps = (RULES_TEXT||"").split("\n").map(l => l.replace(/^\s*(?:\d+\s*[.)\-:]|[-•*])\s*/, "").trim()).filter(Boolean);
+    const q = TURNO_MINUTES/4, mm = v => fmtNum(v, 1);
+    const phases = `<div class="rl-phases">
+        <div class="rl-phase-label">Your ${TURNO_MINUTES}-minute round</div>
+        ${PHASES.map((ph,i)=>`<div class="rl-phase"><b>${ph}</b><span>${mm(i*q)}–${mm((i+1)*q)} min</span></div>`).join("")}
+      </div>`;
+    const body = steps.length
+      ? `<div class="rl-grid" style="${rulesGridStyle(steps.length)}">${steps.map((t,i)=>`
+          <div class="rl-card" style="--i:${i}">
+            <div class="rl-top"><span class="rl-num">${i+1}</span><span class="rl-icon" aria-hidden="true">${ruleIcon(t)}</span></div>
+            <div class="rl-text">${escapeHtml(t)}</div>
+          </div>`).join("")}</div>`
+      : `<div class="rl-empty"><div><div>📜</div>No rules added yet.<br>Go to ⚙ Settings to write them.</div></div>`;
     root.innerHTML = `
       <div class="pc-team-bg">
         <div class="pc-team-card-wrap">
@@ -1313,10 +1372,7 @@ const ART={
             ${backLink()}
             <div class="pc-header"><div class="pc-eyebrow">Read before you start</div><div class="pc-title">Contest rules</div></div>
           </div>
-          <div class="pc-fixed-scroll">
-            ${has ? `<div class="pc-rules-display">${escapeHtml(RULES_TEXT)}</div>`
-                  : `<div class="pc-rules-display pc-rules-empty">No rules added yet.<br>Go to ⚙ Settings to write them.</div>`}
-          </div>
+          <div class="pc-fixed-scroll rl-scroll"><div class="rl-wrap">${phases}${body}</div></div>
         </div>
       </div>`;
   }
