@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Pizza Contest</title>
+<title>Zeelandia Pizza Contest</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1135,7 +1135,7 @@ const ART={
   function renderOrganizer(){
     root.innerHTML = `
       <div class="pc-topbar">
-        <div class="pc-brand"><span class="pc-brand-mark"></span>Pizza Contest</div>
+        <div class="pc-brand"><span class="pc-brand-mark"></span>Zeelandia Pizza Contest</div>
         <div class="pc-topbar-right">
           <div class="pc-topbar-meta">${GAME.participants} participants · ${GAME.rounds} ${GAME.rounds===1?"round":"rounds"} · ${TEAM_IDS.length} teams (${perTeamText()} per team) · ${TURNO_MINUTES} min per round</div>
           <button class="pc-btn ghost-inv small" data-act="goto" data-v="rules">📜 Rules</button>
@@ -1620,7 +1620,7 @@ const ART={
     // header
     doc.setFillColor(29,5,61); doc.rect(0,0,W,24,"F");
     doc.setFillColor(255,228,0); doc.circle(M+2,12,2,"F");
-    doc.setFont("helvetica","bold"); doc.setFontSize(15); doc.setTextColor(255,255,255); doc.text("Pizza Contest",M+7,13.8);
+    doc.setFont("helvetica","bold"); doc.setFontSize(15); doc.setTextColor(255,255,255); doc.text("Zeelandia Pizza Contest",M+7,13.8);
     doc.setFont("helvetica","normal"); doc.setFontSize(9); doc.setTextColor(203,185,232); doc.text("Recipe card  ·  "+date,W-M,13.8,{align:"right"});
     doc.setFillColor(255,228,0); doc.rect(0,24,W,1.6,"F");
     // title
@@ -1661,7 +1661,7 @@ const ART={
     doc.text("Total",M+14,y+1.5); doc.text(String(st.pieces),132,y+1.5,{align:"right"}); doc.text(hasW?fmtNum(grams):"–",W-M,y+1.5,{align:"right"});
     // footer
     doc.setDrawColor(29,5,61); doc.setLineWidth(.6); doc.line(M,H-M-7,W-M,H-M-7);
-    doc.setFont("helvetica","bold"); doc.setFontSize(8.5); doc.setTextColor(180,172,196); doc.text("Pizza Contest",M,H-M-2);
+    doc.setFont("helvetica","bold"); doc.setFontSize(8.5); doc.setTextColor(180,172,196); doc.text("Zeelandia Pizza Contest",M,H-M-2);
     doc.setFont("helvetica","normal"); doc.setTextColor(110,100,128); doc.text(`${teamName(teamId)}  ·  ${title}`,W-M,H-M-2,{align:"right"});
     const slug = slugify(`${teamName(teamId)} ${title}`).replace(/_/g,"-");
     try{
