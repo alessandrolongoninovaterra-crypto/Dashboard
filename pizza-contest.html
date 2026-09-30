@@ -224,7 +224,7 @@
   .pc-footer-btns{display:flex; gap:8px;}
 
   /* ---- catalogue / settings columns ---- */
-  .pc-cat-columns{display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:10px; flex:1; min-height:0;}
+  .pc-cat-columns{display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:10px; flex:1; min-height:0;}
   .pc-cat-col{
     display:flex; flex-direction:column; min-height:0; background:var(--bg);
     border:1px solid var(--line); border-radius:14px; padding:10px; overflow:hidden;
@@ -496,7 +496,7 @@
   .pc-tile-foot .pc-tile-pizza{flex:1; min-width:0;}
   .pc-tile-thumb{flex:none; height:auto; width:clamp(56px,40%,130px); max-height:none; aspect-ratio:1; filter:drop-shadow(0 3px 5px rgba(29,5,61,.25));}
   .pc-tile{align-items:stretch;}
-  .dz-tabs{flex-wrap:nowrap;}
+  .dz-tabs{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); row-gap:4px;}
   .dz-tab{position:relative; flex:1 1 0; min-width:0; white-space:nowrap; overflow:visible; padding:.35em .25em; font-size:.88em;}
   .dz-tab b{position:absolute; top:-.45em; right:-.2em; margin:0; min-width:1.6em; line-height:1.6em; padding:0 .35em; border-radius:99px; box-shadow:0 1px 3px rgba(29,5,61,.25); z-index:1;}
   @media (prefers-reduced-motion:reduce){ .pc-btn,.dz-tbtn,.pc-tile{transition:none;} }
@@ -580,7 +580,7 @@
   @keyframes tileIn{from{opacity:0; transform:translateY(18px) scale(.94);}to{opacity:1; transform:none;}}
   .dz-tiles.enter .dz-tile{animation:tileIn .5s var(--spring) both; animation-delay:calc(var(--i,0) * 30ms);}
   .pc-cat-columns > *{animation:tileIn .55s var(--spring) both;}
-  .pc-cat-columns > :nth-child(2){animation-delay:.05s} .pc-cat-columns > :nth-child(3){animation-delay:.1s} .pc-cat-columns > :nth-child(4){animation-delay:.15s} .pc-cat-columns > :nth-child(5){animation-delay:.2s}
+  .pc-cat-columns > :nth-child(2){animation-delay:.05s} .pc-cat-columns > :nth-child(3){animation-delay:.1s} .pc-cat-columns > :nth-child(4){animation-delay:.15s} .pc-cat-columns > :nth-child(5){animation-delay:.2s} .pc-cat-columns > :nth-child(6){animation-delay:.25s}
   .pc-tile.t-live .pc-tile-name{background:linear-gradient(90deg,var(--aub-800) 0%,var(--aub-500) 40%,var(--aub-800) 80%); background-size:200% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:sheen 3.5s linear infinite;}
   @keyframes sheen{to{background-position:-200% 0;}}
   .pc-tile-thumb{animation:spinIn .8s var(--spring) both;}
@@ -667,6 +667,14 @@
     .rl-card{min-height:0;}
   }
 
+  /* spices: text-only tiles and rows */
+  .dz-tile.noart .dz-tbtn{min-height:6.2em; justify-content:center; gap:.4em; padding:.8em .4em;}
+  .dz-tile.noart .dz-tn{font-size:1em; min-height:0;}
+  .dz-spice-state{font-size:.75em; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-dim);}
+  .dz-tile.noart.sel .dz-spice-state{color:var(--purple);}
+  .dz-spice-row .dz-lname{padding-left:.3em;}
+  .dz-tags span.spice{background:var(--yellow-soft); border-color:var(--yellow-dark);}
+  .pc-ing-row.noart{padding-left:14px;}
   .dz-lname{min-width:6.5em;}
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}
@@ -730,10 +738,11 @@
     proteine: { label:"Proteins", hint:"optional", items:[
       {id:"salame", n:"Spicy salami"}, {id:"tonno", n:"Tuna"}, {id:"pollo", n:"Spiced chicken"},
       {id:"ham", n:"Ham"}, {id:"bacon", n:"Bacon"}, {id:"speck", n:"Speck"}, {id:"wurstel", n:"Wurstel"},
+      {id:"mortadella", n:"Mortadella"}, {id:"uovo", n:"Egg"},
     ]},
     formaggi: { label:"Cheeses", hint:"optional", items:[
       {id:"mozzarella", n:"Mozzarella"}, {id:"gorgonzola", n:"Gorgonzola"}, {id:"grated_cheese", n:"Grated cheese"},
-      {id:"cheddar", n:"Cheddar"}, {id:"brie", n:"Brie"},
+      {id:"cheddar", n:"Cheddar"}, {id:"brie", n:"Brie"}, {id:"emmental", n:"Emmental"}, {id:"stracciatella", n:"Stracciatella"},
     ]},
     vegetali: { label:"Vegetables", hint:"optional", items:[
       {id:"mais", n:"Sweetcorn"}, {id:"zucchine", n:"Courgette"}, {id:"olive", n:"Olive"},
@@ -743,11 +752,15 @@
     ]},
     wild: { label:"Wild card", hint:"for the brave", items:[
       {id:"ananas", n:"Pineapple"}, {id:"mango", n:"Mango"}, {id:"jalapenos", n:"Jalapeños"},
-      {id:"pistacchio", n:"Pistachio crumble"}, {id:"miele", n:"Honey"}, {id:"cioccolato", n:"Dark chocolate 70%"}, {id:"nuts", n:"Nuts"},
+      {id:"pistacchio", n:"Pistachio crumble"}, {id:"miele", n:"Honey"}, {id:"cioccolato", n:"Dark chocolate 70%"}, {id:"nuts", n:"Nuts"}, {id:"banana", n:"Banana"},
+    ]},
+    spezie: { label:"Spices", hint:"as many as you like", noArt:true, items:[
+      {id:"aglio", n:"Garlic"}, {id:"prezzemolo", n:"Parsley"}, {id:"basilico", n:"Basil"}, {id:"origano", n:"Oregano"}, {id:"pepe", n:"Pepper"},
     ]},
   };
   const CAT_ORDER = ["salse","formaggi","proteine","vegetali","wild"]; // stacking order on the pizza (bottom → top)
-  const CAT_TAB = ["salse","proteine","formaggi","vegetali","wild"];   // order of the tabs
+  const CAT_TAB = ["salse","proteine","formaggi","vegetali","wild","spezie"];   // order of the tabs
+  const SPICE = "spezie"; // spices: text only (no drawing), multiple choice, not counted in the topping limit
 
   // drawing, size on the pizza (% of diameter), grams per piece (sauce: grams total), default pieces
   const META_DEF = {
@@ -760,6 +773,7 @@
     aubergine:["aubergine",11,5,8], yellow_tomatoes:["yellowtom",9,6,9], cipolla:["onion",11,4,8],
     mushrooms:["mushrooms",12,5,9], artichokes:["artichokes",12,7,7], friarielli:["friarielli",12,3,7],
     dried_tomatoes:["driedtom",10,2,8],
+    mortadella:["mortadella",17,8,6], uovo:["egg",17,50,3], emmental:["emmental",12,5,7], stracciatella:["stracciatella",18,15,5], banana:["banana",9,5,10],
     ananas:["pineapple",12,8,8], mango:["mango",12,8,8], jalapenos:["jalapenos",8,2,10],
     pistacchio:["pistachio",6,.5,14], miele:["honey",28,10,3], cioccolato:["chocolate",9,4,8], nuts:["nuts",8,3,10],
   };
@@ -777,6 +791,7 @@
   const nameOf = id => ITEM[id] ? ITEM[id].n : id;
   const catOf  = id => ITEM[id] ? ITEM[id].cat : null;
   const isSauce = id => catOf(id) === "salse";
+  const isSpice = id => catOf(id) === SPICE;
   const metaOf = id => META[id] || (META[id] = {art:null, size:12, weight:0, n:isSauce(id)?0:8});
 
   // ===================== INGREDIENT DRAWINGS (all in code, work offline) =====================
@@ -824,6 +839,12 @@ const ART={
  pistachio:g=>{const r=rng(24),cols=['#8DB255','#6E9A3E','#A9CB6E','#5E8A34'];for(let i=0;i<46;i++){const t=r()*6.28,d=Math.sqrt(r())*100;g.save();g.translate(128+Math.cos(t)*d,128+Math.sin(t)*d);g.rotate(r()*6.28);g.fillStyle=cols[i%4];g.fillRect(-5-r()*8,-4-r()*6,10+r()*14,8+r()*10);g.restore()}},
  honey:g=>{g.lineCap='round';g.lineJoin='round';const p=()=>{g.beginPath();g.moveTo(30,60);g.bezierCurveTo(130,20,140,110,226,70);g.bezierCurveTo(120,140,140,170,40,150);g.bezierCurveTo(140,190,150,230,222,214)};g.strokeStyle='#DC9612';g.lineWidth=18;p();g.stroke();g.strokeStyle='#F6C650';g.lineWidth=6;p();g.stroke()},
  chocolate:g=>{g.save();g.translate(128,128);g.rotate(.35);g.beginPath();g.moveTo(-90,-70);g.lineTo(70,-90);g.lineTo(96,50);g.lineTo(-40,84);g.closePath();g.fillStyle=LG(g,'#4A2A1B','#2E170D',-90,90);g.fill();g.strokeStyle='#6A4030';g.lineWidth=5;g.stroke();g.strokeStyle='rgba(0,0,0,.35)';g.lineWidth=3;g.beginPath();g.moveTo(-10,-84);g.lineTo(2,74);g.moveTo(-84,0);g.lineTo(90,-12);g.stroke();g.restore()},
+ mortadella:g=>{D(g,128,128,108,'#E99C9A');D(g,128,128,100,RG(g,'#F7C3C1','#EDA7A5'));SC(g,rng(31),14,84,'rgba(255,248,240,.95)',4,9);SC(g,rng(32),6,80,'#8DB255',3,5)},
+ egg:g=>{BL(g,104,'#FDFBF4',.2,33,'rgba(215,205,180,.8)');D(g,118,120,42,RG(g,'#FFC93C','#F29A0E',60));D(g,106,106,10,'rgba(255,255,255,.55)')},
+ emmental:g=>{g.save();g.translate(128,128);g.rotate(-.2);g.fillStyle=LG(g,'#FBEA9E','#F2D56A',-90,90);g.fillRect(-90,-80,180,160);g.strokeStyle='#E2C355';g.lineWidth=6;g.strokeRect(-90,-80,180,160);
+   [[-42,-30,20],[30,-38,14],[48,30,22],[-30,40,13],[4,4,10]].forEach(([x,y,r])=>{g.fillStyle='#E3C251';g.beginPath();g.arc(x,y,r,0,7);g.fill();g.fillStyle='rgba(255,255,255,.35)';g.beginPath();g.arc(x-r*.25,y-r*.25,r*.45,0,7);g.fill()});g.restore()},
+ stracciatella:g=>{BL(g,100,'#FFFDF5',.3,34,'rgba(225,215,190,.7)');g.strokeStyle='rgba(235,225,200,.9)';g.lineWidth=5;g.lineCap='round';const r=rng(35);for(let i=0;i<12;i++){const x=60+r()*136,y=60+r()*136;g.beginPath();g.moveTo(x,y);g.quadraticCurveTo(x+r()*40-20,y+r()*40-20,x+r()*50-25,y+r()*50-25);g.stroke()}SC(g,rng(36),10,70,'rgba(255,255,255,.9)',6,12)},
+ banana:g=>{D(g,128,128,104,'#EFD27A');D(g,128,128,94,RG(g,'#FFF6D2','#F6E4A4'));for(let i=0;i<3;i++){const a=i/3*6.283-1.57;g.fillStyle='rgba(185,150,90,.55)';g.beginPath();g.ellipse(128+Math.cos(a)*18,128+Math.sin(a)*18,12,5,a,0,7);g.fill()}SC(g,rng(37),10,60,'rgba(150,110,60,.45)',2,3)},
  nuts:g=>{D(g,96,128,64,'#B98552');D(g,160,128,64,'#B98552');g.strokeStyle='#7A5230';g.lineWidth=6;g.lineCap='round';for(let i=0;i<4;i++){g.beginPath();g.arc(96,128,20+i*12,-1.2+i*.3,1.2-i*.3);g.stroke();g.beginPath();g.arc(160,128,20+i*12,Math.PI-1.2+i*.3,Math.PI+1.2-i*.3);g.stroke()}}
 };
 
@@ -948,7 +969,7 @@ const ART={
   }
 
   // ===================== STATE (in memory, single screen) =====================
-  function defaultTeam(id){ return { name:"", pizzaName:"", status:"attesa", recipe:{sauce:null, layers:[]} }; }
+  function defaultTeam(id){ return { name:"", pizzaName:"", status:"attesa", recipe:{sauce:null, layers:[], spices:[]} }; }
   let teams = {};
   function ensureTeams(){ TEAM_IDS.forEach(id => { if(!teams[id]) teams[id] = defaultTeam(id); }); } // teams removed from the setup keep their data if added back
   ensureTeams();
@@ -970,9 +991,10 @@ const ART={
   const perTeam = () => GAME.participants / Math.max(1, TEAM_IDS.length);
   const perTeamText = () => { const lo=Math.floor(perTeam()), hi=Math.ceil(perTeam()); return lo===hi ? `${lo}` : `${lo}–${hi}`; };
 
+  const spicesOf = r => (r.spices||[]).filter(id=>ITEM[id]);
   function recipeStats(r){
     const toppings=r.layers.filter(l=>ITEM[l.ingId]);
-    return { hasSalsa:!!(r.sauce&&ITEM[r.sauce]), distinct:toppings.length, pieces:toppings.reduce((a,l)=>a+l.count,0), over:toppings.length>GAME.maxToppings };
+    return { spices:spicesOf(r).length, hasSalsa:!!(r.sauce&&ITEM[r.sauce]), distinct:toppings.length, pieces:toppings.reduce((a,l)=>a+l.count,0), over:toppings.length>GAME.maxToppings };
   }
 
   // ===================== TIMER + PHASES =====================
@@ -1302,6 +1324,7 @@ const ART={
     indexItems();
     Object.values(teams).forEach(t => {
       if(t.recipe.sauce === id) t.recipe.sauce = null;
+      if(t.recipe.spices) t.recipe.spices = t.recipe.spices.filter(s => s !== id);
       t.recipe.layers = t.recipe.layers.filter(l => l.ingId !== id);
     });
     render();
@@ -1313,7 +1336,7 @@ const ART={
       const cat = INGREDIENTS[catKey];
       return `<div class="pc-cat-col">
           <div class="pc-cat-col-head"><span class="pc-cat-col-title">${cat.label}</span><span class="pc-cat-col-hint">${cat.hint}${cat.max===1?" · one choice":""}</span></div>
-          <div class="pc-ing-rows">${cat.items.map(it=>`<div class="pc-ing-row"><div class="pc-ing-row-icon">${thumbImg(it.id)}</div><div class="pc-ing-row-name">${escapeHtml(it.n)}</div></div>`).join("")}</div>
+          <div class="pc-ing-rows">${cat.items.map(it=>`<div class="pc-ing-row${cat.noArt?" noart":""}">${cat.noArt?"":`<div class="pc-ing-row-icon">${thumbImg(it.id)}</div>`}<div class="pc-ing-row-name">${escapeHtml(it.n)}</div></div>`).join("")}</div>
         </div>`;
     }).join("");
     root.innerHTML = `
@@ -1397,12 +1420,18 @@ const ART={
   function tabsHtml(){
     const r = curTeam().recipe;
     return CAT_TAB.map(c=>{
-      const n = c==="salse" ? (r.sauce?1:0) : r.layers.filter(l=>catOf(l.ingId)===c).length;
+      const n = c==="salse" ? (r.sauce?1:0) : c===SPICE ? spicesOf(r).length : r.layers.filter(l=>catOf(l.ingId)===c).length;
       return `<button role="tab" class="dz-tab" data-act="dz-tab" data-v="${c}" aria-selected="${c===activeCat}">${INGREDIENTS[c].label}${n?`<b>${n}</b>`:""}</button>`;
     }).join("");
   }
   function tilesHtml(){
     const r = curTeam().recipe, locked = isLocked(), st = recipeStats(r);
+    if(activeCat===SPICE) return INGREDIENTS[SPICE].items.map((it,idx)=>{
+      const sel = (r.spices||[]).includes(it.id);
+      return `<div class="dz-tile noart ${sel?"sel":""} ${lastPicked===it.id?"pop":""}" style="--i:${idx}">
+          <button class="dz-tbtn" data-act="dz-pick" data-id="${it.id}" ${locked?"disabled":""} aria-pressed="${sel}" aria-label="${sel?"Remove":"Add"} ${escapeHtml(it.n)}"><span class="dz-tn">${escapeHtml(it.n)}</span><span class="dz-spice-state">${sel?"✓ added":"+ add"}</span></button>
+        </div>`;
+    }).join("") || `<p class="dz-empty">No spices in this category. Add them in ⚙ Settings.</p>`;
     return INGREDIENTS[activeCat].items.map((it,idx)=>{
       const sauce = activeCat==="salse", sel = sauce && r.sauce===it.id;
       const L = r.layers.find(l=>l.ingId===it.id), n = L ? L.count : 0;
@@ -1418,6 +1447,7 @@ const ART={
     const st = recipeStats(curTeam().recipe);
     if(isLocked()) return ["warn","Round over: the recipe is locked. You can still confirm it or save the PDF."];
     if(activeCat==="salse") return ["","Pick one sauce. Tap it again to remove it."];
+    if(activeCat===SPICE) return ["","Pick as many spices as you like; tap again to remove. They don't count toward the topping limit."];
     if(st.distinct >= GAME.maxToppings) return ["warn",`${GAME.maxToppings} toppings reached. Add more pieces of the ones you have, or remove one first.`];
     return ["",`Tap to add, tap again for more pieces. Max ${GAME.maxToppings} toppings beyond the sauce.`];
   }
@@ -1433,7 +1463,8 @@ const ART={
         <button class="dz-ibtn rm" data-act="dz-rm" title="Remove" aria-label="Remove ${escapeHtml(nameOf(l.ingId))}" ${locked}>×</button>
       </li>`).join("");
     const sauce = r.sauce && ITEM[r.sauce] ? `<li class="dz-layer"><span class="dz-thumb sm">${thumbImg(r.sauce)}</span><div class="dz-lname">${escapeHtml(nameOf(r.sauce))}<small>Sauce</small></div></li>` : "";
-    return (rows || `<li class="dz-empty">No toppings yet. Tap an ingredient above.</li>`) + sauce;
+    const spices = spicesOf(r).map(id=>`<li class="dz-layer dz-spice-row"><div class="dz-lname">${escapeHtml(nameOf(id))}<small>Spice</small></div><button class="dz-ibtn rm" data-act="dz-rm-spice" data-id="${id}" title="Remove" aria-label="Remove ${escapeHtml(nameOf(id))}" ${locked}>×</button></li>`).join("");
+    return (rows || `<li class="dz-empty">No toppings yet. Tap an ingredient above.</li>`) + spices + sauce;
   }
   function footerHtml(){
     const st = recipeStats(curTeam().recipe);
@@ -1470,7 +1501,7 @@ const ART={
 
     if(confirmed){
       const r = t.recipe;
-      const tags = [r.sauce?`<span>${escapeHtml(nameOf(r.sauce))}</span>`:""].concat(r.layers.filter(l=>ITEM[l.ingId]).map(l=>`<span><b>${l.count}×</b>${escapeHtml(nameOf(l.ingId))}</span>`)).join("");
+      const tags = [r.sauce?`<span>${escapeHtml(nameOf(r.sauce))}</span>`:""].concat(r.layers.filter(l=>ITEM[l.ingId]).map(l=>`<span><b>${l.count}×</b>${escapeHtml(nameOf(l.ingId))}</span>`)).concat(spicesOf(r).map(id=>`<span class="spice">${escapeHtml(nameOf(id))}</span>`)).join("");
       root.innerHTML = `
         <div class="pc-team-bg dz">
           ${head}
@@ -1564,6 +1595,11 @@ const ART={
     if(isLocked()) return;
     const r = curTeam().recipe;
     lastPicked = id;
+    if(isSpice(id)){
+      const sp = r.spices || (r.spices = []);
+      r.spices = sp.includes(id) ? sp.filter(s=>s!==id) : sp.concat(id);
+      refreshDesigner(); return;
+    }
     if(isSauce(id)){
       r.sauce = r.sauce===id ? null : id;
       if(r.sauce) pizzaAnim = {sauce:0};
@@ -1585,9 +1621,9 @@ const ART={
   function resetClear(){ clearTimeout(clearArm); clearArm = 0; const b=$("#dz-clear"); if(b){ b.textContent="Clear all"; b.classList.remove("armed"); } }
   function clearAll(btn){
     const r = curTeam().recipe;
-    if(!r.layers.length && !r.sauce){ toast("The pizza is already empty."); return; }
+    if(!r.layers.length && !r.sauce && !spicesOf(r).length){ toast("The pizza is already empty."); return; }
     if(!clearArm){ btn.textContent = "Tap to confirm"; btn.classList.add("armed"); clearArm = setTimeout(resetClear, 3000); return; }
-    resetClear(); r.layers = []; r.sauce = null; activeCat = "salse"; refreshDesigner(); toast("Pizza cleared.");
+    resetClear(); r.layers = []; r.sauce = null; r.spices = []; activeCat = "salse"; refreshDesigner(); toast("Pizza cleared.");
   }
   function confirmRecipe(){
     const t = curTeam(), st = recipeStats(t.recipe);
@@ -1698,7 +1734,7 @@ const ART={
     const RH=11.5;
     const row=(id,cat,pcs,gpp,gtot)=>{
       if(y+RH>H-M-14){ doc.addPage(); y=M+4; head(); }
-      const th=getArt(id).toDataURL("image/png"); doc.addImage(th,"PNG",M,y-4.2,9,9);
+      if(!isSpice(id)){ const th=getArt(id).toDataURL("image/png"); doc.addImage(th,"PNG",M,y-4.2,9,9); }
       doc.setFont("helvetica","bold"); doc.setFontSize(10.5); doc.setTextColor(29,5,61); doc.text(nameOf(id),M+14,y+.6);
       doc.setFont("helvetica","normal"); doc.setFontSize(7.5); doc.setTextColor(110,100,128); doc.text(cat.toUpperCase(),M+14,y+4.2);
       doc.setFontSize(10.5); doc.setTextColor(29,5,61);
@@ -1711,7 +1747,8 @@ const ART={
     const layers = r.layers.filter(l=>ITEM[l.ingId]).map((l,k)=>({l,k})).sort((a,b)=>(CAT_ORDER.indexOf(catOf(a.l.ingId))-CAT_ORDER.indexOf(catOf(b.l.ingId)))||(a.k-b.k));
     layers.forEach(({l})=>{ const w=metaOf(l.ingId).weight; if(w>0){grams+=w*l.count;hasW=true}
       row(l.ingId,INGREDIENTS[catOf(l.ingId)].label,String(l.count),w>0?fmtNum(w):"–",w>0?fmtNum(w*l.count):"–"); });
-    if(!layers.length && !r.sauce){ doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(110,100,128); doc.text("No ingredients chosen yet.",M+14,y+2); y+=RH; }
+    spicesOf(r).forEach(id=>row(id,"Spice","pinch","–","–"));
+    if(!layers.length && !r.sauce && !spicesOf(r).length){ doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(110,100,128); doc.text("No ingredients chosen yet.",M+14,y+2); y+=RH; }
     if(y+RH>H-M-6){ doc.addPage(); y=M+4; }
     doc.setFont("helvetica","bold"); doc.setFontSize(10.5); doc.setTextColor(29,5,61);
     doc.text("Total",M+14,y+1.5); doc.text(String(st.pieces),132,y+1.5,{align:"right"}); doc.text(hasW?fmtNum(grams):"–",W-M,y+1.5,{align:"right"});
@@ -1751,6 +1788,7 @@ const ART={
       case "dz-pdf": makePDF(selectedTeam); return;
       case "dz-confirm": confirmRecipe(); return;
       case "dz-edit": curTeam().status = "attesa"; render(); return;
+      case "dz-rm-spice": if(isLocked()) return; { const r=curTeam().recipe; r.spices = (r.spices||[]).filter(s=>s!==id); } refreshDesigner(); return;
     }
     const li = b.closest("[data-layer]"); if(!li || isLocked()) return;
     const r = curTeam().recipe, L = r.layers.find(l=>l.id===li.dataset.layer); if(!L) return;
